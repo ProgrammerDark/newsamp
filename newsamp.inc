@@ -700,7 +700,7 @@ public OnGameModeInit()
 	#endif
 }
 
-public OnPlayerWeaponShot(playerid, weaponid, hittype, hitid, Float:fX, Float:fY, Float:fZ)
+public OnPlayerWeaponShot(playerid, WEAPON:weaponid, BULLET_HIT_TYPE:hittype, hitid, Float:fX, Float:fY, Float:fZ)
 {
 	new
 	    capacity = Callback_GetMaxClip(weaponid),
@@ -982,7 +982,7 @@ public OnPlayerUpdate(playerid)
 	#endif
 }
 
-public OnPlayerStateChange(playerid, newstate, oldstate)
+public OnPlayerStateChange(playerid, PLAYER_STATE:newstate, PLAYER_STATE:oldstate)
 {
 	new
 		vehicleid = GetPlayerVehicleID(playerid);
@@ -1022,7 +1022,7 @@ public OnPlayerStateChange(playerid, newstate, oldstate)
 	#endif
 }
 
-public OnPlayerKeyStateChange(playerid, newkeys, oldkeys)
+public OnPlayerKeyStateChange(playerid, KEY:newkeys, KEY:oldkeys)
 {
 	new
 		weaponid = GetPlayerWeapon(playerid);
@@ -1077,7 +1077,7 @@ public OnPlayerClickTextDraw(playerid, Text:clickedid)
 	#endif
 }
 
-public OnPlayerTakeDamage(playerid, issuerid, Float:amount, weaponid, bodypart)
+public OnPlayerTakeDamage(playerid, issuerid, Float:amount, WEAPON:weaponid, bodypart)
 {
 	if(weaponid == WEAPON_COLLISION && issuerid == INVALID_PLAYER_ID && amount >= 4.95)
 	{
@@ -1312,15 +1312,15 @@ public Callback_TabCheck()
 #endif
 
 #if defined CB_OnPlayerStateChange
-	forward CB_OnPlayerStateChange(playerid, newstate, oldstate);
+	forward CB_OnPlayerStateChange(playerid, PLAYER_STATE:newstate, PLAYER_STATE:oldstate);
 #endif
 
 #if defined CB_OnPlayerKeyStateChange
-	forward CB_OnPlayerKeyStateChange(playerid, newkeys, oldkeys);
+	forward CB_OnPlayerKeyStateChange(playerid, KEY:newkeys, KEY:oldkeys);
 #endif
 
 #if defined CB_OnPlayerWeaponShot
-	forward CB_OnPlayerWeaponShot(playerid, weaponid, hittype, hitid, Float:fX, Float:fY, Float:fZ);
+	forward CB_OnPlayerWeaponShot(playerid, WEAPON:weaponid, BULLET_HIT_TYPE:hittype, hitid, Float:fX, Float:fY, Float:fZ);
 #endif
 
 #if defined CB_OnPlayerClickTextDraw
@@ -1328,5 +1328,5 @@ public Callback_TabCheck()
 #endif
 
 #if defined CB_OnPlayerTakeDamage
-	forward CB_OnPlayerTakeDamage(playerid, issuerid, Float:amount, weaponid, bodypart);
+	forward CB_OnPlayerTakeDamage(playerid, issuerid, Float:amount, WEAPON:weaponid, bodypart);
 #endif
